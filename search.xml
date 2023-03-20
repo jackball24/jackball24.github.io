@@ -4,11 +4,11 @@
   
     
     <entry>
-      <title>My New Post</title>
-      <link href="/2023/03/20/My-New-Post/"/>
-      <url>/2023/03/20/My-New-Post/</url>
+      <title>时空の杂记</title>
+      <link href="/2023/03/20/%E6%97%B6%E7%A9%BA%E3%81%AE%E6%9D%82%E8%AE%B0/"/>
+      <url>/2023/03/20/%E6%97%B6%E7%A9%BA%E3%81%AE%E6%9D%82%E8%AE%B0/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<p>记ubuntu gnome界面macos化、vscode简单配置、jetbrain全家桶配置、从0开始vim</p><p>​       学习了一些有关linux的知识，打算接触一下manjaro kde plasma，neo vim<del>（被dash board吸引）</del>，有关ctfweb学习摆了许久，在组里人push下接触了一些pop链、ssti、文件上传漏洞、ssrf以及一些常规的绕过。</p><p>​看到了X1r0z学弟的blog，五六年前接触webctf以及实战一些相关内容，现阶段已然成为web一神。</p><p>​有关java后端的知识要开始启动了，捡了很久还没有捡起来的算法已经烂掉了，安全与开发于我而言不可同时兼顾，所以最近整了一下IDE，准备大干一场，哦对，还有数模的纯英写作。</p><p>​windows terminal、git bash、python tensorflow、jupyter也才刚刚起步，之前也是部署了属于自己的网站，个人blog偷懒在博客园不想动了，靶场的话看情况吧，ctf入门赛也打了不少，就是觉得时间有些不太够，要学的东西真的还有很多，现在我仍然不具备个人的开发能力，在web安全方面的成就也很有限，感觉学的五花八门反而不如专精一项，好提前进厂打工。</p><p>​        以上均是大一下至大二上的想法了，现在我的方向全部转移到开发方向上来</p>]]></content>
       
       
       
@@ -17,11 +17,11 @@
     
     
     <entry>
-      <title></title>
-      <link href="/2023/03/20/2022.10.25%E5%B0%8F%E7%BB%93/"/>
-      <url>/2023/03/20/2022.10.25%E5%B0%8F%E7%BB%93/</url>
+      <title>My New Post</title>
+      <link href="/2023/03/20/My-New-Post/"/>
+      <url>/2023/03/20/My-New-Post/</url>
       
-        <content type="html"><![CDATA[<hr><h2 id="时空杂记1"><a href="#时空杂记1" class="headerlink" title="时空杂记1"></a>时空杂记1</h2><h2 id="记ubuntu-gnome界面macos化、vscode简单配置、jetbrain全家桶配置、从0开始vim"><a href="#记ubuntu-gnome界面macos化、vscode简单配置、jetbrain全家桶配置、从0开始vim" class="headerlink" title="记ubuntu gnome界面macos化、vscode简单配置、jetbrain全家桶配置、从0开始vim"></a>记ubuntu gnome界面macos化、vscode简单配置、jetbrain全家桶配置、从0开始vim</h2><p>​       学习了一些有关linux的知识，打算接触一下manjaro kde plasma，neo vim<del>（被dash board吸引）</del>，有关ctfweb学习摆了许久，在组里人push下接触了一些pop链、ssti、文件上传漏洞、ssrf以及一些常规的绕过。</p><p>​看到了X1r0z学弟的blog，五六年前接触webctf以及实战一些相关内容，现阶段已然成为web一神，很多问题都要向他请教。</p><p>​有关java后端的知识要开始启动了，捡了很久还没有捡起来的算法已经烂掉了，安全与开发于我而言不可同时兼顾，所以最近整了一下IDE，准备大干一场，哦对，还有数模的纯英写作，latex的使用。</p><p>​windows terminal、git bash、python tensorflow、jupyter也才刚刚起步，之前也是部署了属于自己的网站，个人blog偷懒在博客园不想动了，靶场的话看情况吧，ctf入门赛也打了不少，就是觉得时间有些不太够，要学的东西真的还有很多，现在我仍然不具备个人的开发能力，在web安全方面的成就也很有限，感觉学的五花八门反而不如专精一项，好提前进厂打工。</p>]]></content>
+        <content type="html"><![CDATA[]]></content>
       
       
       
