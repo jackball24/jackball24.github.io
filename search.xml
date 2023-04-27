@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>时空の杂记</title>
+      <link href="/2023/03/20/%E6%97%B6%E7%A9%BA%E3%81%AE%E6%9D%82%E8%AE%B0/"/>
+      <url>/2023/03/20/%E6%97%B6%E7%A9%BA%E3%81%AE%E6%9D%82%E8%AE%B0/</url>
+      
+        <content type="html"><![CDATA[<p>记ubuntu gnome界面macos化、vscode简单配置、jetbrain全家桶配置、从0开始学vim&#x2F;&#x2F;（大一下</p><p>​       学习了一些有关linux的知识，打算接触一下manjaro kde plasma，neo vim<del>（被dash board吸引）</del>，有关ctfweb学习摆了许久，在组里人push下接触了一些pop链、ssti、文件上传漏洞、ssrf以及一些常规的绕过。回首过往，发现还是贪玩摆烂的时间多，玩机器人，玩服务器，玩AI画图、gpt，都没干什么正经的项目。</p><p>​看到了X1r0z学弟的blog，五六年前接触webctf以及实战一些相关内容，现阶段已成为web一神。</p><p>​有关java后端的知识要开始启动了，捡了很久还没有捡起来的算法已经烂掉了，安全与开发于我而言不可同时兼顾，所以最近整了一下IDE，准备大干一场，哦对，还有数模的纯英写作。</p><p>​windows terminal、git、python tensorflow、jupyter也才刚刚起步，之前也是部署了属于自己的网站，博客园已经许久不写内容，靶场的话看情况吧，ctf入门赛也打了不少，就是觉得时间有些不太够，要学的东西真的还有很多，现在我仍然不具备个人的开发能力，在web安全方面的成就也很有限，感觉学的五花八门反而不如专精一项，好提前进厂打工。&#x2F;&#x2F;（大二上</p><p>​        以上均是大一下至大二上的想法了，现在我的方向全部转移到开发方向上来。</p><p>寒假青训营学习了一些go的知识，现阶段要Java与算法兼顾，边学边写博客，学校的专业课也会整理在github等平台。就业这条路对于本科生本就困难，既然要去争取，就要找准方向实干，人的能力终究是有限的，我不可能在这短短时间内学习大佬们口中无所不谈的各方向知识，我目前所能做的，就是入门开发。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 札记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>My New Post</title>
       <link href="/2023/03/20/My-New-Post/"/>
       <url>/2023/03/20/My-New-Post/</url>

@@ -3,19 +3,22 @@
 <html class="article-header-style-default">
 <head>
 	
-	<title>归档 - 时空L0k1&#39;s Blog</title>
+	<title>时空の杂记 - 时空L0k1&#39;s Blog</title>
 	<meta charset="utf-8">
 	
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	
-	<meta name="description" content="时空…一场梦">
-<meta property="og:type" content="website">
-<meta property="og:title" content="时空L0k1&#39;s Blog">
-<meta property="og:url" content="http://example.com/archives/index.html">
+	<meta name="description" content="记ubuntu gnome界面macos化、vscode简单配置、jetbrain全家桶配置、从0开始学vim&#x2F;&#x2F;（大一下 ​       学习了一些有关linux的知识，打算接触一下manjaro kde plasma，neo vim（被dash board吸引），有关ctfweb学习摆了许久，在组里人push下接触了一些pop链、ssti、文件上传漏洞、ssrf以及一些常规">
+<meta property="og:type" content="article">
+<meta property="og:title" content="时空の杂记">
+<meta property="og:url" content="http://example.com/2023/03/20/%E6%97%B6%E7%A9%BA%E3%81%AE%E6%9D%82%E8%AE%B0/index.html">
 <meta property="og:site_name" content="时空L0k1&#39;s Blog">
-<meta property="og:description" content="时空…一场梦">
+<meta property="og:description" content="记ubuntu gnome界面macos化、vscode简单配置、jetbrain全家桶配置、从0开始学vim&#x2F;&#x2F;（大一下 ​       学习了一些有关linux的知识，打算接触一下manjaro kde plasma，neo vim（被dash board吸引），有关ctfweb学习摆了许久，在组里人push下接触了一些pop链、ssti、文件上传漏洞、ssrf以及一些常规">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-03-20T11:26:56.000Z">
+<meta property="article:modified_time" content="2023-04-27T11:17:59.629Z">
 <meta property="article:author" content="Jackball">
+<meta property="article:tag" content="札记">
 <meta name="twitter:card" content="summary">
 
 	<meta name="theme-color" content="#5e72e4">
@@ -478,7 +481,7 @@
 			
 			
 				<ul id='leftbar_part1_menu' class='leftbar-menu'>
-					<li class='leftbar-menu-item'><a href='/'>首页</a></li><li class='leftbar-menu-item current'><a href='/archives'>归档</a></li><li class='leftbar-menu-item leftbar-menu-item-haschildren'><a no-pjax onclick='return false;'>文章目录</a><ul class='leftbar-menu-item leftbar-menu-subitem shadow-sm'><li class='leftbar-menu-item leftbar-menu-item-haschildren'><a no-pjax onclick='return false;'>文章子目录</a><ul class='leftbar-menu-item leftbar-menu-subitem shadow-sm'><li class='leftbar-menu-item'><a href='/'>首页</a></li></ul></li></ul></li>
+					<li class='leftbar-menu-item'><a href='/'>首页</a></li><li class='leftbar-menu-item'><a href='/archives'>归档</a></li><li class='leftbar-menu-item leftbar-menu-item-haschildren'><a no-pjax onclick='return false;'>文章目录</a><ul class='leftbar-menu-item leftbar-menu-subitem shadow-sm'><li class='leftbar-menu-item leftbar-menu-item-haschildren'><a no-pjax onclick='return false;'>文章子目录</a><ul class='leftbar-menu-item leftbar-menu-subitem shadow-sm'><li class='leftbar-menu-item'><a href='/'>首页</a></li></ul></li></ul></li>
 				</ul>
 			
 			<div class="card-body text-center leftbar-search-button">
@@ -490,18 +493,49 @@
 		<div id="leftbar_part2" class="widget widget_search card bg-white shadow-sm border-0">
 			<div id="leftbar_part2_inner" class="card-body">
 				
-				<div class="nav-wrapper" style="padding-top: 5px; display:none; ">
+				<div class="nav-wrapper" style="padding-top: 5px;">
 	                <ul class="nav nav-pills nav-fill" role="tablist">
 						
+							<li class="nav-item sidebar-tab-switcher">
+								<a class="active show" id="leftbar_tab_catalog_btn" data-toggle="tab" href="#leftbar_tab_catalog" role="tab" aria-controls="leftbar_tab_catalog" no-pjax>文章目录</a>
+							</li>
+						
 						<li class="nav-item sidebar-tab-switcher">
-							<a class="active show" id="leftbar_tab_overview_btn" data-toggle="tab" href="#leftbar_tab_overview" role="tab" aria-controls="leftbar_tab_overview" no-pjax>站点概览</a>
+							<a class="" id="leftbar_tab_overview_btn" data-toggle="tab" href="#leftbar_tab_overview" role="tab" aria-controls="leftbar_tab_overview" no-pjax>站点概览</a>
 						</li>
 	                </ul>
 				</div>
 				<div>
 					<div class="tab-content" style="padding: 10px 10px 0 10px;">
 						
-						<div class="tab-pane fade text-center active show" id="leftbar_tab_overview" role="tabpanel" aria-labelledby="leftbar_tab_overview_btn">
+							<div class="tab-pane fade active show" id="leftbar_tab_catalog" role="tabpanel" aria-labelledby="leftbar_tab_catalog_btn">
+								<div id="leftbar_catalog"></div>
+								<script type="text/javascript">
+									$(function () {
+										$(document).headIndex({
+											articleWrapSelector: '#post_content',
+											indexBoxSelector: '#leftbar_catalog',
+											subItemBoxClass: "index-subItem-box",
+											itemClass: "index-item",
+											linkClass: "index-link",
+											offset: 80,
+										});
+									})
+								</script>
+								
+									<style>
+										#leftbar_catalog ul {
+											counter-reset: blog_catalog_number;
+										}
+										#leftbar_catalog li.index-item > a:before {
+											content: counters(blog_catalog_number, '.') " ";
+											counter-increment: blog_catalog_number;
+										}
+									</style>
+								
+							</div>
+						
+						<div class="tab-pane fade text-center" id="leftbar_tab_overview" role="tabpanel" aria-labelledby="leftbar_tab_overview_btn">
 							<img id="leftbar_overview_author_image" src="/assets/img/1.jpg" class="img-fluid rounded-circle shadow-sm" style="width: 100px;" alt="avatar">
 							<h6 id="leftbar_overview_author_name">时空loki</h6>
 							<nav class="site-state">
@@ -603,45 +637,186 @@
 	<main id="main" class="site-main" role="main">
 		
 		
-		
-				<article class="post post-full card bg-white shadow-sm border-0">
+			
+	<article class="post post-full card bg-white shadow-sm border-0 post-preview">
 	<header class="post-header text-center">
-		<a class="post-title" href="/archives/">归档</a>
+		
+		<a class="post-title" href="/2023/03/20/%E6%97%B6%E7%A9%BA%E3%81%AE%E6%9D%82%E8%AE%B0/">时空の杂记</a>
+		<div class="post-meta">
+			
+						
+						<div class="post-meta-detail post-meta-detail-time">
+							<i class="fa fa-clock-o" aria-hidden="true"></i>
+							<time title="发布于 2023-3-20 19:26:56 | 编辑于 2023-4-27 19:17:59">2023-3-20 19:26
+							</time>
+						</div>
+					
+						
+							<div class="post-meta-devide">|</div>
+						
+						<div class="post-meta-detail post-meta-detail-words">
+							<i class="fa fa fa-book" aria-hidden="true"></i>
+							<span id="busuanzi_container_page_pv">
+								阅读<span id="busuanzi_value_page_pv"></span>次
+							</span>
+						</div>
+					
+						
+							<div class="post-meta-devide">|</div>
+						
+						<div class="post-meta-detail post-meta-detail-words">
+							<i class="fa fa-file-word-o" aria-hidden="true"></i>
+							525 字
+						</div>
+					
+						
+							<div class="post-meta-devide">|</div>
+						
+						<div class="post-meta-detail post-meta-detail-readingtime">
+							<i class="fa fa-hourglass-end" aria-hidden="true"></i>
+							1 分钟
+						</div>
+					
+		</div>
+		
 	</header>
 
 	<div class="post-content" id="post_content">
-		<div class='argon-timeline'>
-			
-						<div class='argon-timeline-node'>
-							<div class='argon-timeline-time archive-timeline-year'>2023</div>
-							<div class='argon-timeline-card card bg-gradient-secondary archive-timeline-title'></div>
-						</div>
-						
-					<div class='argon-timeline-node'>
-						<div class='argon-timeline-time'>3-20</div>
-						<div class='argon-timeline-card card bg-gradient-secondary archive-timeline-title'>
-							<a href="/2023/03/20/%E6%97%B6%E7%A9%BA%E3%81%AE%E6%9D%82%E8%AE%B0/">时空の杂记</a>
-						</div>
-					</div>
-			
-					<div class='argon-timeline-node'>
-						<div class='argon-timeline-time'>3-20</div>
-						<div class='argon-timeline-card card bg-gradient-secondary archive-timeline-title'>
-							<a href="/2023/03/20/My-New-Post/">My New Post</a>
-						</div>
-					</div>
-			
-					<div class='argon-timeline-node'>
-						<div class='argon-timeline-time'>3-13</div>
-						<div class='argon-timeline-card card bg-gradient-secondary archive-timeline-title'>
-							<a href="/2023/03/13/hello-world/">Welcome to shikong&#39;s blog</a>
-						</div>
-					</div>
-			
-		</div>
+		<p>记ubuntu gnome界面macos化、vscode简单配置、jetbrain全家桶配置、从0开始学vim&#x2F;&#x2F;（大一下</p>
+<p>​       学习了一些有关linux的知识，打算接触一下manjaro kde plasma，neo vim<del>（被dash board吸引）</del>，有关ctfweb学习摆了许久，在组里人push下接触了一些pop链、ssti、文件上传漏洞、ssrf以及一些常规的绕过。回首过往，发现还是贪玩摆烂的时间多，玩机器人，玩服务器，玩AI画图、gpt，都没干什么正经的项目。</p>
+<p>​		看到了X1r0z学弟的blog，五六年前接触webctf以及实战一些相关内容，现阶段已成为web一神。</p>
+<p>​		有关java后端的知识要开始启动了，捡了很久还没有捡起来的算法已经烂掉了，安全与开发于我而言不可同时兼顾，所以最近整了一下IDE，准备大干一场，哦对，还有数模的纯英写作。</p>
+<p>​		windows terminal、git、python tensorflow、jupyter也才刚刚起步，之前也是部署了属于自己的网站，博客园已经许久不写内容，靶场的话看情况吧，ctf入门赛也打了不少，就是觉得时间有些不太够，要学的东西真的还有很多，现在我仍然不具备个人的开发能力，在web安全方面的成就也很有限，感觉学的五花八门反而不如专精一项，好提前进厂打工。&#x2F;&#x2F;（大二上</p>
+<p>​        以上均是大一下至大二上的想法了，现在我的方向全部转移到开发方向上来。</p>
+<p>寒假青训营学习了一些go的知识，现阶段要Java与算法兼顾，边学边写博客，学校的专业课也会整理在github等平台。就业这条路对于本科生本就困难，既然要去争取，就要找准方向实干，人的能力终究是有限的，我不可能在这短短时间内学习大佬们口中无所不谈的各方向知识，我目前所能做的，就是入门开发。</p>
+
 	</div>
+
+	
+
+	
+
+	
+		<div class="post-tags">
+			<i class="fa fa-tags" aria-hidden="true"></i>
+			<a class="tag badge badge-secondary post-meta-detail-tag -none-link" href="/tags/%E6%9C%AD%E8%AE%B0/" rel="tag">札记</a>
+		</div>
+	
 </article>
 
+	<div id="share_container">
+	<div id="share" data-initialized="true">
+		<a class="no-pjax icon-wechat" tooltip="分享到微信">
+			<button class="btn btn-icon btn-success">
+				<span class="btn-inner--icon"><i class="fa fa-weixin"></i></span>
+			</button>
+		</a>
+		<a target="_blank" class="no-pjax icon-douban" tooltip="分享到豆瓣">
+			<button class="btn btn-icon btn-primary" style="background: #209261;border: none;">
+				豆
+			</button>
+		</a>
+		<a target="_blank" class="no-pjax icon-qq" tooltip="分享到 QQ">
+			<button class="btn btn-icon btn-primary" style="background: #2196f3;border: none;">
+				<span class="btn-inner--icon"><i class="fa fa-qq"></i></span>
+			</button>
+		</a>
+		<a target="_blank" class="no-pjax icon-qzone" tooltip="分享到 QQ 空间">
+			<button class="btn btn-icon btn-primary" style="background: #ffc107;border: none;">
+				<span class="btn-inner--icon"><i class="fa fa-star"></i></span>
+			</button>
+		</a>
+		<a target="_blank" class="no-pjax icon-weibo" tooltip="分享到微博">
+			<button class="btn btn-icon btn-warning">
+				<span class="btn-inner--icon"><i class="fa fa-weibo"></i></span>
+			</button>
+		</a>
+		<a target="_blank" class="no-pjax icon-facebook" tooltip="分享到 Facebook">
+			<button class="btn btn-icon btn-primary" style="background: #283593;border: none;">
+				<span class="btn-inner--icon"><i class="fa fa-facebook"></i></span>
+			</button>
+		</a>
+		<a target="_blank" class="no-pjax icon-twitter" tooltip="分享到 Twitter">
+			<button class="btn btn-icon btn-primary" style="background: #03a9f4;border: none;">
+				<span class="btn-inner--icon"><i class="fa fa-twitter"></i></span>
+			</button>
+		</a>
+		<a target="_blank" class="no-pjax icon-telegram" href="https://telegram.me/share/url?url=http://example.com/2023/03/20/%E6%97%B6%E7%A9%BA%E3%81%AE%E6%9D%82%E8%AE%B0/&text=时空の杂记" tooltip="分享到 Telegram">
+			<button class="btn btn-icon btn-primary" style="background: #42a5f5;border: none;">
+				<span class="btn-inner--icon"><i class="fa fa-telegram"></i></span>
+			</button>
+		</a>
+		<a target="_blank" class="no-pjax icon-copy-link" id="share_copy_link" tooltip="复制链接">
+			<button class="btn btn-icon btn-default">
+				<span class="btn-inner--icon"><i class="fa fa-link"></i></span>
+			</button>
+		</a>
+	</div>
+	<button id="share_show" class="btn btn-icon btn-primary" tooltip="分享">
+		<span class="btn-inner--icon"><i class="fa fa-share"></i></span>
+	</button>
+</div>
+<script type="text/javascript">
+	socialShare("#share", {
+	    title : '时空の杂记',
+	    description : '记ubuntu gnome界面macos化、vscode简单配置、jetbrain全家桶配置、从0开...',
+	    wechatQrcodeTitle : "分享到微信",
+	    wechatQrcodeHelper : '微信扫描二维码',
+	    source : 'http://example.com/2023/03/20/%E6%97%B6%E7%A9%BA%E3%81%AE%E6%9D%82%E8%AE%B0/'
+	});
+	$("#share_show")[0].onclick = function(){
+		$("#share_container").addClass("opened");
+	};
+	$("#share_copy_link")[0].onclick = function(){
+		let input = document.createElement('input');
+		document.body.appendChild(input);
+		input.setAttribute("value", window.location.href);
+		input.setAttribute("readonly", "readonly");
+		input.setAttribute("style", "opacity: 0;mouse-events:none;");
+		input.select();
+		if (document.execCommand('copy')){
+			iziToast.show({
+				title: '链接已复制',
+				message: "链接已复制到剪贴板",
+				class: 'shadow',
+				position: 'topRight',
+				backgroundColor: '#2dce89',
+				titleColor: '#ffffff',
+				messageColor: '#ffffff',
+				iconColor: '#ffffff',
+				progressBarColor: '#ffffff',
+				icon: 'fa fa-check',
+				timeout: 5000
+			});
+		}else{
+			iziToast.show({
+				title: '复制失败',
+				message: "请手动复制链接",
+				class: 'shadow',
+				position: 'topRight',
+				backgroundColor: '#f5365c',
+				titleColor: '#ffffff',
+				messageColor: '#ffffff',
+				iconColor: '#ffffff',
+				progressBarColor: '#ffffff',
+				icon: 'fa fa-close',
+				timeout: 5000
+			});
+		}
+		document.body.removeChild(input);
+	};
+</script>
+
+
+
+
+
+<div class="post-navigation card shadow-sm"><div class="post-navigation-item post-navigation-pre"></div><div class="post-navigation-item post-navigation-next"><span class="page-navigation-extra-text">下一篇 <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></span><a href="/2023/03/20/My-New-Post/" rel="next"> My New Post</a></div></div>
+
+
+
+
+		
 		
 		
 		
