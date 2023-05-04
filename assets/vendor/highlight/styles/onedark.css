@@ -16,7 +16,7 @@ http://visoftinc.com/ (I hope that is the right URL, didn't really check :-/)
   overflow-x: auto;
   padding: 0.5em;
   background: #282c34;
-  color: #abb2bf;
+  color: #EE7070;
   font-size: 1.1em;
 }
 .hljs-control {
@@ -39,10 +39,7 @@ http://visoftinc.com/ (I hope that is the right URL, didn't really check :-/)
 }
 .hljs-number,
 .hljs-regexp,
-.hljs-variable
-{
-  color:#EE7070;
-}
+.hljs-variable,
 .hljs-template-variable {
   color: #d19a66;
 }
