@@ -16,15 +16,18 @@ http://visoftinc.com/ (I hope that is the right URL, didn't really check :-/)
   overflow-x: auto;
   padding: 0.5em;
   background: #282c34;
-  color: #EE7070;
+  color: #abb2bf;
   font-size: 1.1em;
 }
+
 .hljs-control {
   color: #9fb2bf !important;
 }
-.hljs > *::selection {
+
+.hljs>*::selection {
   background-color: #3e4451;
 }
+
 .hljs-comment {
   color: #5c6370;
   font-style: italic;
@@ -37,6 +40,7 @@ http://visoftinc.com/ (I hope that is the right URL, didn't really check :-/)
 .hljs-string {
   color: #98c379;
 }
+
 .hljs-number,
 .hljs-regexp,
 .hljs-variable,
@@ -47,18 +51,23 @@ http://visoftinc.com/ (I hope that is the right URL, didn't really check :-/)
 .hljs-subst {
   color: #519f50;
 }
+
 .hljs-keyword {
   color: #c678dd;
 }
-.hljs-function > .hljs-title {
+
+.hljs-function>.hljs-title {
   color: #61afef;
 }
+
 .hljs-tag {
-  color: #abb2bf;
+  color: #ee7070;
 }
+
 .hljs-name {
   color: #e06c75;
 }
+
 .hljs-type {
   color: #da4939;
 }
@@ -66,6 +75,7 @@ http://visoftinc.com/ (I hope that is the right URL, didn't really check :-/)
 .hljs-attr {
   color: #d19a66;
 }
+
 .hljs-symbol,
 .hljs-bullet,
 .hljs-built_in,
@@ -80,7 +90,7 @@ http://visoftinc.com/ (I hope that is the right URL, didn't really check :-/)
 
 
 .hljs-meta {
-  color: #;
+  color: #ee7070;
 }
 
 .hljs-title,
