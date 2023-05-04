@@ -49,10 +49,18 @@
         <content type="html"><![CDATA[]]></content>
       
       
+      <categories>
+          
+          <category> 技术 </category>
+          
+      </categories>
+      
       
         <tags>
             
-            <tag> 工具 图床 </tag>
+            <tag> 工具 </tag>
+            
+            <tag> 图床 </tag>
             
         </tags>
       
