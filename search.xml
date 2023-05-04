@@ -8,13 +8,19 @@
       <link href="/2023/05/04/Git%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
       <url>/2023/05/04/Git%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
       
-        <content type="html"><![CDATA[<p>代码的对比以及版本管理</p>]]></content>
+        <content type="html"><![CDATA[<p>代码的对比以及版本管理</p><p>——回溯</p>]]></content>
       
+      
+      <categories>
+          
+          <category> 代码管理 </category>
+          
+      </categories>
       
       
         <tags>
             
-            <tag> 代码管理 回溯 </tag>
+            <tag> Git </tag>
             
         </tags>
       
@@ -30,10 +36,18 @@
         <content type="html"><![CDATA[]]></content>
       
       
+      <categories>
+          
+          <category> 文笔 </category>
+          
+      </categories>
+      
       
         <tags>
             
-            <tag> 规范 博采众长 </tag>
+            <tag> 规范 </tag>
+            
+            <tag> 博采众长 </tag>
             
         </tags>
       
@@ -51,16 +65,16 @@
       
       <categories>
           
-          <category> 技术 </category>
+          <category> 工具&amp;环境 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 工具 </tag>
-            
             <tag> 图床 </tag>
+            
+            <tag> markdown </tag>
             
         </tags>
       
@@ -76,10 +90,18 @@
         <content type="html"><![CDATA[<blockquote><p>高中到大二之前写过一些简单的有一点用处的代码（多指实验报告）</p></blockquote><h3 id="1-Kinds-of-sort"><a href="#1-Kinds-of-sort" class="headerlink" title="1.Kinds of sort"></a>1.Kinds of sort</h3><p>其中有些奇奇怪怪的函数命名[&#x2F;滑稽]</p><pre><code class="c++">#include&lt;bits/stdc++.h&gt;using namespace std;void choose(int *a);//选择 void stick(int *a);//插排 void bubbling(int *a);//冒泡 void fast(int left,int right,int *a);//快排 void shell(int *a);//希尔 void merge(int *a,int l,int r);//归并 void heap_sort(int *a,int len);//堆排 void gaynumber(int *a,int n);//基数(正数情况)void radixsort(int *a,int n);//基数(加强) void bucket(int *a);//桶排 void odd_even(int *a);//砖排(奇偶) void heap(int a[],int start,int length);void change(int *a,int *b);int main()&#123;    int i,a[100];     srand(time(0));    for(i=0;i&lt;100;i++)&#123;        a[i]=pow(-1,rand()%2+1)*(rand()%101);        cout&lt;&lt;a[i]&lt;&lt;&quot; &quot;;    &#125;//输出-100~100之间的随机数，可能重复     cout&lt;&lt;endl&lt;&lt;endl&lt;&lt;&quot;排序后：&quot;&lt;&lt;endl&lt;&lt;endl;    //sort(a,a+100);//内置快速排序     //choose(a);    //stick(a);     //bubbling(a);    //fast(0,99,a);    shell(a);    //merge(a,0,99);     //heap_sort(a,100);    //gaynumber(a,100);    //radixsort(a,100);    //bucket(a);    //odd_even(a);        for(i=0;i&lt;100;i++)&#123;        cout&lt;&lt;a[i]&lt;&lt;&quot; &quot;;    &#125;&#125;void change(int *a,int *b)&#123;//可以直接用swap代替     int t=*a;    *a=*b;    *b=t;&#125;void choose(int *a)&#123;    int i,k,j;    for(j=0;j&lt;99;j++)&#123;        k=j;        i=j+1;        while(i&lt;=99)&#123;        a[i]&lt;a[k]?k=i:i++;        &#125;        if(k!=j)            change(&amp;a[j],&amp;a[k]);    &#125;&#125;void stick(int *a)&#123;    int t,i,j;    for (i=0;i&lt;99;i++)    &#123;        t=a[i+1];        for(j=i;j&gt;=0&amp;&amp;a[j]&gt;t;j--)        &#123;            a[j+1]=a[j];        &#125;        a[j+1]=t;    &#125;&#125;void bubbling(int *a)&#123;    for(int i=0;i&lt;99;i++)&#123;        for(int j=99;j&gt;i;j--)&#123;            if(a[j]&lt;a[j-1])                change(&amp;a[j],&amp;a[j-1]);        &#125;    &#125;    &#125;void fast(int left,int right,int *a)&#123;    if(left&gt;=right)return;    int i=left,j=right,base=a[left];    while(i&lt;j)&#123;        while(a[j]&gt;=base &amp;&amp; i&lt;j)j--;        while(a[i]&lt;=base &amp;&amp; i&lt;j)i++;        if(i&lt;j)            change(&amp;a[i],&amp;a[j]);    &#125;      a[left]=a[i];    a[i]=base;    fast(left,i-1,a);    fast(i+1,right,a);&#125;void shell(int *a)&#123;    int length=100,gap=1;    while(gap&lt;length)&#123;        gap=gap*3+1;    &#125;    while(gap&gt;0)&#123;        for(int i=gap;i&lt;length;i++)&#123;            int tmp=a[i],j=i-gap;            //跨区间排序            while(j&gt;=0&amp;&amp;a[j]&gt;tmp)&#123;                a[j+gap]=a[j];                j-=gap;            &#125;            a[j+gap]=tmp;        &#125;        gap=gap/3;    &#125;&#125;void merge(int *a,int l,int r)&#123;    if(l==r)return;//递归退出条件    int mid=l+r&gt;&gt;1;//中间值mid    merge(a,l,mid),merge(a,mid+1,r);    //合并    int k=l,i=l,j=mid+1,temp[1000];    while(i&lt;=mid&amp;&amp;j&lt;=r)&#123;        if(a[i]&lt;=a[j])//左大于右             temp[k++]=a[i++];        else             temp[k++]=a[j++];//两段相比小的放入到临时数组里面    &#125;    //如果一个数组已经遍历完了，另外一个数组剩余一个数，这个数一定是最大的。    while(i&lt;=mid)        temp[k++]=a[i++];    while(j&lt;=r)        temp[k++]=a[j++];     for(i=0;i&lt;=r;i++)&#123;         a[i]=temp[i];     &#125;&#125;void heap_sort(int* a,int len)&#123;//可以len=sizeof(a)/sizeof(int)        //初始化建堆：        for(int i=len/2-1;i&gt;=0;--i)//1.创建堆make_heap, 从最后一个非叶子节点开始                heap(a,i,len);         //排序重建堆             for(int i=len-1;i&gt;=0;i--)&#123;//2. 堆排序, 此时 [1, len] 为一个堆                swap(a[0],a[i]);           //堆顶元素和末尾元素进行交换                heap(a,0,i);        // 对顶点进行一次堆排序// 此时堆末元素已经有序(存的是最大值),        &#125;// 剩余堆的范围变成了 [1, len-1], 但由于上一步的交换可能破坏堆的性质, 故要进行调整&#125;void heap(int a[],int start,int length)//判断是不是符合大根堆&#123;        int left=2*start+1,right=2*start+2,max=start;        if(left&lt;length&amp;&amp;a[left]&gt;a[max])//left &lt;= len 防止节点不存在                max=left;        if(right&lt;length&amp;&amp;a[right]&gt;a[max])//a[right] &gt; a[max] 判断是不是根节点最大(因为你每个子树都要符合大根堆的性质啊)                max=right;        if(max!=start)&#123;                swap(a[max],a[start]);//交换节点                heap(a,max,length);//从当交换后前节点开始, 调整下面的堆        &#125;&#125;//这里的 max 是当前 father 的某一个儿子, 而不是 father 自身,　因为交换后 father 本来就是有序的.void gaynumber(int *a,int n) //基数排序&#123;    int d=1; //保存最大的位数    int p=10;    for(int i=0;i&lt;n;++i)    &#123;        while(a[i]&gt;=p)        &#123;            p*=10;            ++d;        &#125;    &#125;    int tmp[n],radix=1,i,j,k;    int count[10]; //计数器    for(i=1;i&lt;=d;i++) //进行d次排序    &#123;        for(j=0;j&lt;10;j++)            count[j]=0; //每次分配前清空计数器        for(j=0;j&lt;n;j++)        &#123;            k=(a[j]/radix)%10; //统计每个桶中的记录数            count[k]++;        &#125;        for(j=1;j&lt;10;j++)            count[j]=count[j-1]+count[j]; //将tmp中的位置依次分配给每个桶        for(j=n-1;j&gt;=0;j--) //将所有桶中记录依次收集到tmp中        &#123;            k=(a[j]/radix)%10;            tmp[count[k]-1]=a[j];            count[k]--;        &#125;        for(j=0;j&lt;n;j++) //将临时数组的内容复制到a中            a[j]=tmp[j];        radix=radix*10;    &#125;&#125;void radixsort(int *a,int n)&#123;      int tank[20][100];         //20个桶, tank[x][i]表示当前位是x的第i个数，这里tank[x][0]表示tank[x]这个数组有多少个元素,故存数据时从tank[x][1]开始存    int k=1,d=1;        //k是最大位数，d是当前位的权重，即1, 10, 100.....        //计算最大位数, 公式 k = (int)log10(x) + 1，注意x要大于0    for(int i=0;i&lt;n;i++)         if(a[i])        //非零时, 计算 |a[i]| 的位数            k=max((int)log10(abs(a[i]))+1,k);        while(k--)&#123;            //循环k次        memset(tank,0,sizeof(tank));        //每次循环先把tank清零                for(int i=0;i&lt;n;i++)&#123;        //枚举n个数            int x=a[i]/d%10+10; //得到当前位的值x（记得要加10）            tank[x][++tank[x][0]]=a[i];     //放到第x个桶里面，注意是++tank[x][0]        &#125;                int cnt=0;        for(int i=0;i&lt;20;i++)       //枚举20个桶            //依次拿出每个桶里面的值[1, tank[i][0]], 注意取出顺序和放入顺序是一样的（类似队列,先进先出），故基数排序稳定            for(int j=1;j&lt;=tank[i][0];j++)                   a[cnt++]=tank[i][j];        //回收        d*=10;        //权重 * 10    &#125; &#125;void bucket(int *a)&#123;    int b[201]=&#123;0&#125;,j=0,s;    for(int i=0;i&lt;100;i++)&#123;        b[a[i]+100]++;    &#125;    for(int i=0;i&lt;=200;i++)&#123;        if(b[i]!=0)            for(s=0;s&lt;b[i];s++)                a[j++]=i-100;    &#125;&#125; void odd_even(int *a)&#123;    int sort=0,i;    while(!sort)&#123;      sort=1;      for(i=1;i&lt;100;i+=2)&#123;         if(a[i]&gt;a[i+1])&#123;            swap(a[i],a[i+1]);            sort=0;         &#125;      &#125;      for(i=0;i&lt;99;i+=2)&#123;         if(a[i]&gt;a[i+1])&#123;            swap(a[i],a[i+1]);            sort=0;         &#125;      &#125;   &#125;&#125;</code></pre><h3 id="2-广告位"><a href="#2-广告位" class="headerlink" title="2.广告位"></a>2.广告位</h3><p><img src="https://cdn.jsdelivr.net/gh/jackball24/miscpic@main/202305040848895.png" alt="1"></p>]]></content>
       
       
+      <categories>
+          
+          <category> Code </category>
+          
+      </categories>
+      
       
         <tags>
             
-            <tag> Code </tag>
+            <tag> cpp </tag>
+            
+            <tag> python </tag>
             
         </tags>
       
@@ -94,6 +116,12 @@
       
         <content type="html"><![CDATA[<blockquote><p>​许久没有写博客，先简单聊聊吧</p></blockquote><h3 id="1-浅学的一些东西"><a href="#1-浅学的一些东西" class="headerlink" title="1.浅学的一些东西"></a>1.浅学的一些东西</h3><p>因为大学前是没怎么接触电脑的小白（以前家里台式机，从小学开始接触过qq、4399等，在正经的计算机领域是green hand），做了不少没什么用的探索，网站的域名解析，使用集成环境搭建登录小网站，接触一些密码，写过简单爬虫……&#x2F;&#x2F;（<strong>大一上</strong>干的闲事）| ubuntu gnome界面macos化、qq nonebot聊天机器人、vscode等许多工具的简单配置、从0开始学vim、参加hvv护网行动……&#x2F;&#x2F;<strong>大一下</strong>干的闲事</p><p>学习了一些有关linux的知识，接触了一下manjaro kde plasma，neo vim<del>（被dash board吸引）</del>，有关ctfweb学习摆了许久，在组里人push下接触了一些pop链、ssti、文件上传漏洞、ssrf、许多cve以及一些常规的绕过。回首过往，发现还是贪玩摆烂的时间多，玩机器人，玩服务器，玩AI画图、gpt，都没干什么正经的项目。</p><p>看到了<strong>X1r0z</strong>学弟的blog，五六年前接触webctf以及实战一些相关内容，可谓web一神。</p><p>有关java后端的知识要开始启动了，捡了很久还没有捡起来的算法已经烂掉了，安全与开发于我而言不可同时兼顾，所以最近整了一下IDE，准备大干一场。</p><p>UWP、git、python tensorflow、jupyter也才刚刚起步，之前也是部署了属于自己的网站，博客园已经许久不写内容，还有一个迟迟未建的靶场……就是觉得时间有些不太够，要学的东西真的还有很多，现在我仍然不具备个人的开发能力，在web安全方面的成就也很有限，感觉学的五花八门反而不如专精一项，好提前进厂打工。&#x2F;&#x2F;（<strong>大二上</strong></p><p>以上均是大一下至大二上的想法了，现在我的方向全部转移到开发方向上来。</p><p>寒假青训营学习了一些go的知识，现阶段要Java与算法兼顾，边学边写博客，学校的专业课也会整理在github等平台。就业这条路对于本科生本就困难，既然要去争取，就要找准方向实干，人的能力终究是有限的，我不可能在这短短时间内学习大佬们口中无所不谈的各方向知识，我目前所能做的，就是入门开发。</p><p><strong>大二下</strong>学期过半。然而好像不知道到底干了什么、学了什么。还是老老实实看点后端基础，刷点算法吧……</p><h3 id="2-后续blog的更新周期以及内容"><a href="#2-后续blog的更新周期以及内容" class="headerlink" title="2.后续blog的更新周期以及内容"></a>2.后续blog的更新周期以及内容</h3><p>主要讲述本人零基础学习后端的过程，以及一些必要的算法，坚持每周都要至少产出一篇，可能在学习过程中遇到好玩的或是有意义的也会分享。（flag立于2023.5.3周三）</p><p>还望大佬来交流指正</p><p>过去的已成为过去，就</p><pre><code class="shell">sudo rm -rf/*       ——&gt;reboot</code></pre><p>迎接未来吧！</p><p><img src="https://cdn.jsdelivr.net/gh/jackball24/miscpic@main/202305031932941.png" alt="wallhaven-x67dgo"></p>]]></content>
       
+      
+      <categories>
+          
+          <category> 闲谈 </category>
+          
+      </categories>
       
       
         <tags>
