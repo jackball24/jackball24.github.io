@@ -16,7 +16,7 @@ http://visoftinc.com/ (I hope that is the right URL, didn't really check :-/)
   overflow-x: auto;
   padding: 0.5em;
   background: #282c34;
-  color: #abb2bf;
+  color: #abb2bf;/*全局*/
   font-size: 1.1em;
 }
 
@@ -28,7 +28,7 @@ http://visoftinc.com/ (I hope that is the right URL, didn't really check :-/)
   background-color: #3e4451;
 }
 
-.hljs-comment {
+.hljs-comment {/*注释*/
   color: #5c6370;
   font-style: italic;
 }
@@ -37,13 +37,13 @@ http://visoftinc.com/ (I hope that is the right URL, didn't really check :-/)
   color: #e06c75;
 }
 
-.hljs-string {
+.hljs-string {/*字符串*/
   color: #98c379;
 }
 
+.hljs-variable,
 .hljs-number,
 .hljs-regexp,
-.hljs-variable,
 .hljs-template-variable {
   color: #d19a66;
 }
@@ -52,7 +52,7 @@ http://visoftinc.com/ (I hope that is the right URL, didn't really check :-/)
   color: #519f50;
 }
 
-.hljs-keyword {
+.hljs-keyword {/*关键字void、return等*/
   color: #c678dd;
 }
 
@@ -80,17 +80,17 @@ http://visoftinc.com/ (I hope that is the right URL, didn't really check :-/)
 .hljs-bullet,
 .hljs-built_in,
 .hljs-builtin-name,
-.hljs-link {
+.hljs-link {/*cout等*/
   color: #6d9cbe;
 }
 
-.hljs-params {
+.hljs-params {/*形参*/
   color: #d0d0ff;
 }
 
 
-.hljs-meta {
-  color: #ee7070;
+.hljs-meta {/*头文件*/
+  color: #FF82AB;
 }
 
 .hljs-title,
