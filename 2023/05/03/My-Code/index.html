@@ -17,7 +17,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/jackball24/miscpic@main/202305040848895.png">
 <meta property="article:published_time" content="2023-05-03T13:21:16.000Z">
-<meta property="article:modified_time" content="2023-05-04T08:11:29.290Z">
+<meta property="article:modified_time" content="2023-05-05T07:02:41.538Z">
 <meta property="article:author" content="Jackball">
 <meta property="article:tag" content="cpp">
 <meta property="article:tag" content="python">
@@ -647,7 +647,7 @@
 						
 						<div class="post-meta-detail post-meta-detail-time">
 							<i class="fa fa-clock-o" aria-hidden="true"></i>
-							<time title="发布于 2023-5-3 21:21:16 | 编辑于 2023-5-4 16:11:29">2023-5-3 21:21
+							<time title="发布于 2023-5-3 21:21:16 | 编辑于 2023-5-5 15:02:41">2023-5-3 21:21
 							</time>
 						</div>
 					
@@ -674,7 +674,7 @@
 						
 						<div class="post-meta-detail post-meta-detail-words">
 							<i class="fa fa-file-word-o" aria-hidden="true"></i>
-							1.7k 字
+							4.7k 字
 						</div>
 					
 						
@@ -682,7 +682,7 @@
 						
 						<div class="post-meta-detail post-meta-detail-readingtime">
 							<i class="fa fa-hourglass-end" aria-hidden="true"></i>
-							9 分钟
+							24 分钟
 						</div>
 					
 		</div>
@@ -940,6 +940,498 @@ void odd_even(int *a)&#123;
    &#125;
 &#125;
 </code></pre>
+<pre><code class="python">import easygui as eg
+def GetGongshi(): # 简易Gui
+    eg.textbox(msg=&quot;输入合式公式(字母大写,不超过四个,联结词从高到底出现):&quot;,text=&quot;非：!\n合：&amp;\n析取：|\n蕴含：&gt;\n等价：-\n点击OK进入下一步&quot;)
+    msg=&quot;请输入命题变元的数量(1-4):&quot;
+    while 1:
+        num = eg.enterbox(msg,title=&quot;求命题公式的真值表&quot;)
+        if num == &quot;1&quot;:
+            Gongshi=eg.enterbox(msg=&quot;请输入公式\n(命题变元用P表示)\n(非为&#39;!&#39;,合取为&#39;&amp;&#39;,析取为&#39;|&#39;,蕴含为&#39;&gt;&#39;,等价为&#39;-&#39;)&quot;,title=&quot;求命题公式的真值表&quot;)
+            break
+        elif num == &quot;2&quot;:
+            Gongshi = eg.enterbox(msg=&quot;请输入公式\n(命题变元用P、Q表示)\n(非为&#39;!&#39;,合取为&#39;&amp;&#39;,析取为&#39;|&#39;,蕴含为&#39;&gt;&#39;,等价为&#39;-&#39;)&quot;, title=&quot;求命题公式的真值表&quot;)
+            break
+        elif num == &quot;3&quot;:
+            Gongshi = eg.enterbox(msg=&quot;请输入公式\n(命题变元用P、Q、R表示)\n(非为&#39;!&#39;,合取为&#39;&amp;&#39;,析取为&#39;|&#39;,蕴含为&#39;&gt;&#39;,等价为&#39;-&#39;)&quot;, title=&quot;求命题公式的真值表&quot;)
+            break
+        elif num == &quot;4&quot;:
+            Gongshi = eg.enterbox(msg=&quot;请输入公式\n(命题变元用P、Q、R、S表示)\n(非为&#39;!&#39;,合取为&#39;&amp;&#39;,析取为&#39;|&#39;,蕴含为&#39;&gt;&#39;,等价为&#39;-&#39;)&quot;, title=&quot;求命题公式的真值表&quot;)
+            break
+        else:
+            msg = &quot;输入有误请重新输入\n请输入命题变元的数量(1-4):&quot;
+    return Gongshi+num
+
+#获取逆波兰顺序转化后的公式
+def GetNiBoLan(Gongshi):             #Gongshi转为列表
+    Fuhao = [&quot;!&quot;,&quot;|&quot;,&quot;&amp;&quot;,&quot;&gt;&quot;,&quot;-&quot;,&quot;(&quot;]
+    Yuansu = [&quot;P&quot;,&quot;Q&quot;,&quot;R&quot;,&quot;S&quot;]
+    FuhaoZhan = []
+    NiBoLan = []
+    GS_pop = &quot;&quot;
+    FH_pop = &quot;&quot;
+    while len(Gongshi)!=0:
+        GS_pop = Gongshi.pop(0)
+        if GS_pop in Fuhao:
+            if len(FuhaoZhan) != 0:
+                if FuhaoZhan[-1] == &quot;!&quot; and GS_pop!=&quot;(&quot;:
+                    NiBoLan.append(FuhaoZhan.pop())
+            FuhaoZhan.append(GS_pop)
+        elif GS_pop in Yuansu:
+            NiBoLan.append(GS_pop)
+            if len(FuhaoZhan) != 0:
+                if FuhaoZhan[-1] == &quot;!&quot;:
+                    NiBoLan.append(FuhaoZhan.pop())
+        elif GS_pop == &quot;)&quot;:
+            FH_pop = FuhaoZhan.pop()
+            while FH_pop != &quot;(&quot;:
+                NiBoLan.append(FH_pop)
+                FH_pop = FuhaoZhan.pop()
+    while len(FuhaoZhan) != 0:
+        FH_pop = FuhaoZhan.pop()
+        NiBoLan.append(FH_pop)
+    return NiBoLan
+
+#各符号的逻辑运算
+def JiSuan(*CanShu):   #收集参数，因为参数个可能为一个或者两个：
+    # 下面分别是析取、合取、蕴含、等价的逻辑运算
+    if CanShu[0] == &quot;|&quot;:
+        if CanShu[1] == 1 or CanShu[2] == 1:
+            return 1
+        else:
+            return 0
+    if CanShu[0] == &quot;&amp;&quot;:
+        if CanShu[1] == 0 or CanShu[2] == 0:
+            return 0
+        else:
+            return 1
+    if CanShu[0] == &quot;&gt;&quot;:
+        if CanShu[1] == 1 and CanShu[2] == 0:
+            return 0
+        else:
+            return 1
+    if CanShu[0] == &quot;-&quot;:
+        if CanShu[1] != CanShu[2]:
+            return 0
+        else:
+            return 1
+    if CanShu[0] == &quot;!&quot;:
+        if CanShu[1] == 1:
+            return 0
+        else:
+            return 1
+
+#获得真值表
+def GetValue(NiBoLan,num):   # num为命题变元个数
+    NiBoLanList=NiBoLan.copy()  #这个列表用来存储逆波兰表达式，方便多次输出
+    Fuhao = [ &quot;|&quot;, &quot;&amp;&quot;, &quot;&gt;&quot;, &quot;-&quot;] #逆波兰表达式把括号去掉了,&quot;!&quot;作为特殊位运算做特例处理
+    Yuansu = [&quot;P&quot;, &quot;Q&quot;, &quot;R&quot;, &quot;S&quot;]
+    YuansuZhan = []
+    YS_value = &#123;&quot;P&quot;:0,&quot;Q&quot;:0,&quot;R&quot;:0,&quot;S&quot;:0,&quot;K&quot;:0&#125; #这里用字典来匹配变元字符的逻辑值，k为计算过程中的临时变量，默认值都为0
+    NBL_pop = &quot;&quot;
+    Value = [] #存储所有赋值情况下公式的真值(按赋值顺序存储就行)
+    YS_valuelist = []#储存真值赋值
+    count = 0 #控制循环
+    YS_temp=&quot;&quot;
+    while count &lt; 2**num:
+        NiBoLanList = NiBoLan.copy() #每次循环重置逆波兰列表值
+        YS_value = &#123;&quot;P&quot;: 0, &quot;Q&quot;: 0, &quot;R&quot;: 0, &quot;S&quot;: 0, &quot;K&quot;: 0&#125; #字典重置
+        YS_temp = bin(count)[2:] #十进制转二进制
+        YS_temp = [int(each) for each in YS_temp] #二进制字符串转列表
+        YS_temp.reverse()
+        while len(YS_temp) &lt; num:                                 #长度小于num时其他位赋值0
+            YS_temp.append(0)
+        YS_temp.reverse()
+        YS_valuelist.append(YS_temp[:])
+        while len(YS_temp) &lt; 4:
+            YS_temp.append(0)                                   #保证标准的输出格数pqrs
+        YS_value[&quot;P&quot;] = YS_temp[0]
+        YS_value[&quot;Q&quot;] = YS_temp[1]
+        YS_value[&quot;R&quot;] = YS_temp[2]
+        YS_value[&quot;S&quot;] = YS_temp[3]
+        while  len(NiBoLanList) != 0:
+            NBL_pop=NiBoLanList.pop(0)
+            if NBL_pop in Yuansu:
+                YuansuZhan.append(NBL_pop)
+            elif NBL_pop in Fuhao:
+                YS_value[&quot;K&quot;] = JiSuan(NBL_pop,YS_value[YuansuZhan.pop(-2)],YS_value[YuansuZhan.pop()])  #只要不是否定,从元素栈顶pop变元出来用字典转换后进行逻辑计算
+                YuansuZhan.append(&quot;K&quot;)
+            elif NBL_pop == &quot;!&quot;:
+                YS_value[&quot;K&quot;] = JiSuan(NBL_pop, YS_value[YuansuZhan.pop()])
+                YuansuZhan.append(&quot;K&quot;)
+        Value.append(YS_value[YuansuZhan.pop(0)])
+        count += 1
+    YS_valuelist.append(Value)
+    print(YS_valuelist)
+    return  YS_valuelist
+
+#打印真值表，主析取范式，主合取范式
+def FormPrint(YS_valuelist, num):
+    value=YS_valuelist.pop()
+    msg=&quot;公式&#123;0&#125;真值表结果如下:\n&quot;.format(GongShiChar)
+    YuansuList=[&quot;P&quot;,&quot;Q&quot;,&quot;R&quot;,&quot;S&quot;]
+    #输出真值表
+    for i in range(num):
+        msg = msg+&quot;   &quot;+YuansuList[i]+&quot;    &quot;
+    msg = msg+&quot;    &quot;+&quot;&quot;.join(GongShiChar)+&quot;\n&quot;
+    for i in range(len(YS_valuelist)):
+        for each in YS_valuelist[i]:
+            msg = msg+&quot;   &quot;+str(each)+&quot;    &quot;
+        msg = msg+&quot;    &quot;+str(value[i])+&quot;    \n&quot;
+    #输出主析取范式
+    msg = msg+&quot;主析取范式为：&quot;
+    for each in YS_valuelist:
+        if value[YS_valuelist.index(each)] == 1:
+            msg = msg+&quot;(&quot;
+            for i in range(len(each)):
+                if each[i] == 1:
+                    msg = msg+YuansuList[i]
+                else:
+                    msg = msg+&quot;!&quot;+YuansuList[i]
+                if i != len(each)-1:
+                    msg = msg+&quot;&amp;&quot;
+            msg = msg+&quot;)&quot;
+            if  1 in  value[YS_valuelist.index(each)+1:]:
+                msg = msg+&quot;|&quot;
+    #输出主合取范式
+    msg = msg +&quot;\n主合取范式为：&quot;
+    for each in YS_valuelist:
+        if value[YS_valuelist.index(each)] == 0:
+            msg = msg+&quot;(&quot;
+            for i in range(len(each)):
+                if each[i] == 0:
+                    msg = msg+YuansuList[i]
+                else:
+                    msg = msg+&quot;!&quot;+YuansuList[i]
+                if i != len(each)-1:
+                    msg = msg+&quot;|&quot;
+            msg = msg+&quot;)&quot;
+            if  0 in  value[YS_valuelist.index(each)+1:]:
+                msg = msg+&quot;&amp;&quot;
+    eg.msgbox(msg,title=&quot;输出结果&quot;)
+
+#主函数部分
+GongShi_And_num = GetGongshi()
+GongShi = [each for each in GongShi_And_num]#字符串列表化
+num = int(GongShi.pop())
+GongShiChar=GongShi_And_num[:-1]
+NiBoLan = GetNiBoLan(GongShi)
+YS_valuelist = GetValue(NiBoLan,num)
+FormPrint(YS_valuelist,num)
+</code></pre>
+<pre><code class="java">package mybank;
+
+import javafx.scene.layout.Pane;
+
+import javax.swing.*;
+
+import java.awt.event.ActionListener;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Test &#123;
+    public static List&lt;Account&gt; usersList;
+    public static Account currentAccount;//登录的用户
+    public static File file;//当前用户的记录文件
+    public static StringBuilder recordString=new StringBuilder();//登录后读取文本中的记录，然后和recordString拼接
+    public static Menu menu;//静态的菜单界面，用于在更换密码后关闭菜单界面
+    public static File usersFile;
+    public static StringBuilder usersString=new StringBuilder();
+
+
+     static Reader fw;
+
+    public static void main(String[] args)throws Exception &#123;
+
+        usersList = new ArrayList&lt;Account&gt;();
+
+        //System.out.println(usersList);
+        /**********************用户文本**********************/
+        File users = new File(&quot;users.txt&quot;);
+
+        if (!users.exists()) &#123;
+            try &#123;
+                users.createNewFile();
+                Writer fw = new FileWriter(&quot;users.txt&quot;);
+                fw.write(&quot;admin  12345   88888&quot;);
+                fw.flush();
+                fw.close();
+            &#125; catch (Exception e1) &#123;
+                JOptionPane.showMessageDialog(null, &quot;创建用户文档失败&quot;);
+            &#125;
+
+        &#125;
+        usersFile = users;//创建用户文档，存储用户账户，密码，余额信息;
+        usersListRead();
+        usersListUpdate();
+        /*****************************Login****************************/
+
+        LoginGui loginGui = new LoginGui();
+    &#125;
+    public static void usersListRead()
+    &#123;
+        /**********************按照用户文档读取用户列表并创建所有用户**********************/
+        /**********************并写入list**********************/
+        try &#123;
+            fw = new FileReader(&quot;users.txt&quot;);//字符流
+        &#125; catch (Exception e) &#123;
+            System.out.println(&quot;字符流创建失败&quot;);
+        &#125;
+
+        BufferedReader bfr = new BufferedReader(fw);
+
+        String temp = &quot;&quot;;
+        try &#123;
+
+            System.out.println(&quot;开始写入list&quot;);
+            while ((temp = bfr.readLine()) != null) &#123;//不知为何读取出的字符串中最前面会出现Null
+                String[] tmpstr = new String[5];
+                tmpstr = temp.split(&quot;\\s+&quot;);//分割空格
+
+                System.out.println(&quot;余额：&quot; + tmpstr[2]);
+
+                Account a = new Account(tmpstr[0], tmpstr[1], tmpstr[2]);
+                usersList.add(a);
+                System.out.println(&quot;读取到&quot;+a.id+&quot;,实例化用户&quot; + a.id);
+
+            &#125;
+            bfr.close();
+            fw.close();
+            System.out.println(&quot;用户list:&quot;+usersList);
+        &#125; catch (Exception e) &#123;
+            System.out.println(&quot;读取用户文档失败&quot;);
+        &#125;
+    &#125;
+
+
+
+
+
+    public static void usersListUpdate()
+    &#123;
+
+
+
+        /**********************按照list内容写入文本用户信息**********************/
+        try &#123;
+        Writer fw = new FileWriter(&quot;users.txt&quot;);
+
+        StringBuilder tmpstr = new StringBuilder();
+        for (int i = 0; i &lt; usersList.size(); i++) &#123;
+           // System.out.println(Test.currentAccount.id);
+            tmpstr.append(usersList.get(i).id + &quot;    &quot; + usersList.get(i).password + &quot;    &quot; + usersList.get(i).money + &quot;\r\n&quot;);
+
+            //fw.write(Test.currentAccount.id + &quot;    &quot; + Test.currentAccount.password + &quot;    &quot; + Test.currentAccount.money+&quot;\r\n&quot;);
+        &#125;
+        fw.write(tmpstr.toString());
+        fw.flush();
+        fw.close();
+    &#125;
+    catch (Exception e)
+    &#123;
+        e.printStackTrace();
+        System.out.println(&quot;更新用户失败&quot;);
+    &#125;
+
+    &#125;
+&#125;
+</code></pre>
+<pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+using namespace std;
+ 
+template &lt;class T&gt;
+class SortableList
+&#123;
+    public:
+        int n;
+        T l[100];//输入的数组值
+        T a[100];//实际排序对象
+        SortableList(int max)
+        &#123;
+            n = max;
+        &#125;
+        void MergeSort();
+        void QuickSort();
+        void Input();
+        void Init();
+        void Output();
+        void Select(int k) &#123;
+              int j= Select(k,0,n-1,5);
+              cout&lt;&lt;&quot;第&quot;&lt;&lt;k&lt;&lt;&quot;小元素是：&quot;&lt;&lt; a[k-1]&lt;&lt; endl;
+       &#125;
+    private:
+        int PartitionPlus(int left, int right);
+        int Partition(int left, int right);
+        void Merge(int left, int mid, int right);
+        void MergeSort(int left, int right);
+        void QuickSort(int left, int right);
+        void InsertSort(int left, int right);
+        int Select(int k, int left, int right, int r);
+&#125;;
+
+template&lt;class T&gt;
+void SortableList&lt;T&gt;::Input()
+&#123;
+    for(int i = 0; i &lt; n; i++)
+        cin &gt;&gt; l[i];
+&#125;
+//Init()函数的作用是在两路合并排序结束后将序列恢复到初始序列
+//再进行快速排序
+template&lt;class T&gt;
+void SortableList&lt;T&gt;::Init()
+&#123;
+    for(int i = 0; i &lt; n; i++)
+        a[i] = l[i];
+&#125;
+template&lt;class T&gt;
+void SortableList&lt;T&gt;::Output()
+&#123;
+    for(int i = 0; i &lt; n; i++)
+        cout &lt;&lt; a[i] &lt;&lt; &quot; &quot;;
+    cout &lt;&lt; endl &lt;&lt; endl;
+&#125;
+ 
+//两路合并排序
+template&lt;class T&gt;
+void SortableList&lt;T&gt;::MergeSort()
+&#123;
+    MergeSort(0, n - 1);
+&#125;
+template&lt;class T&gt;
+void SortableList&lt;T&gt;::MergeSort(int left, int right)
+&#123;
+    if(left &lt; right)
+    &#123;
+        int mid = (left + right) / 2;
+        MergeSort(left, mid);
+        MergeSort(mid + 1, right);
+        Merge(left, mid, right);
+    &#125;
+&#125;
+template &lt;class T&gt;
+void SortableList&lt;T&gt;::Merge(int left, int mid, int right)
+&#123;
+    T* temp =new T[right - left + 1];
+    int i = left, j = mid + 1, k = 0;
+    while((i &lt;= mid)&amp;&amp;(j &lt;= right))
+        if(a[i] &lt;= a[j])
+            temp[k ++] = a[i ++];
+        else
+            temp[k ++] = a[j ++];
+    while(i &lt;= mid)
+        temp[k ++] = a[i ++];
+    while(j &lt;= right)
+        temp[k ++] = a[j ++];
+    for(i = 0, k = left; k &lt;= right;)
+        a[k ++] = temp[i ++];
+&#125;
+ 
+//快速排序
+template &lt;class T&gt;
+int SortableList&lt;T&gt;::PartitionPlus(int left, int right)
+&#123;
+    srand((unsigned)time(NULL));
+    int i = rand() % (right - left) + left;
+    swap(a[i], a[left]);
+    return Partition(left, right);
+&#125;
+template &lt;class T&gt;
+int SortableList&lt;T&gt;::Partition(int left, int right)
+&#123;
+    int i = left, j = right + 1;
+    do&#123;
+        do i ++; while(a[i] &lt; a[left]);
+        do j --; while(a[j] &gt; a[left]);
+        if(i &lt; j) swap(a[i], a[j]);
+    &#125;while(i &lt; j);
+    swap(a[left], a[j]);
+    return j;
+&#125;
+template&lt;class T&gt;
+void SortableList&lt;T&gt;::QuickSort()
+&#123;
+    QuickSort(0, n - 1);
+&#125;
+template &lt;class T&gt;
+void SortableList&lt;T&gt;::QuickSort(int left, int right)
+&#123;
+    if(left &lt; right)
+    &#123;
+        int j = PartitionPlus(left, right);
+        QuickSort(left, j - 1);
+        QuickSort(j + 1, right);
+    &#125;
+&#125;
+template &lt;class T&gt;
+void SortableList&lt;T&gt;::InsertSort(int left, int right)
+&#123;
+       for (int i = left + 1; i &lt;= right; i++)
+       &#123;
+              int j = i;
+              int temp = a[i];
+              while (j&gt;left&amp;&amp;temp&lt;a[j- 1])
+              &#123;
+                     a[j]= a[j - 1];
+                     j--;
+              &#125;
+              a[i]= temp;
+       &#125;
+&#125;
+template &lt;class T&gt;
+int SortableList&lt;T&gt;::Select(int k, int left, int right, int r)
+&#123;  //每个分组r个元素，寻找第k小元素
+       int n = right - left + 1;
+       if (n &lt;= r)
+       &#123;
+              InsertSort(left, right);
+              return left + k - 1;  //返回第k小元素的下标
+       &#125;
+       for (int i = 1; i &lt;= n/ r; i++)
+       &#123;
+              InsertSort(left + (i - 1)*r, left + i*r - 1); 
+              //二次取中规则求每组的中间值
+              swap(a[left+i-1],a[left+(i-1)*r+(int)ceil((double)r/2)-1]);  
+              //每组中间值到子表前部集中存放
+       &#125;
+       int j = Select((int)ceil((double)n / r / 2), left, left + n / r - 1, r); 
+       //二次中间值下标为j
+       swap(a[left], a[j]);  //二次中间值为枢纽元，并换至left处
+       j= Partition(left, right);  //对表（子表）进行分划操作
+       if (k == j - left + 1)  //返回第k小元素下标
+              return j;
+       else if (k &lt; j - left + 1)  //在左子表求第k小元素
+              return Select(k, left, j - 1, r);
+       else
+              return Select(k - (j - left + 1), j + 1, right, r);  
+              //在右子表求第k-(j-left+1)小元素
+&#125;
+ 
+int main()
+&#123;
+    int m,k;
+    cout &lt;&lt; &quot;请输入元素个数n: &quot;&lt;&lt; endl;
+    cin &gt;&gt; m;
+    SortableList&lt;int&gt; List(m);
+    cout &lt;&lt; &quot;输入&quot; &lt;&lt; m &lt;&lt; &quot;个数字:&quot; &lt;&lt; endl;
+    List.Input();
+    List.Init();//得到初始状态
+    List.MergeSort();
+    cout &lt;&lt; endl &lt;&lt; &quot;两路合并排序后：&quot; &lt;&lt; endl;
+    List.Output();
+    List.Init();//恢复初始状态
+    cout &lt;&lt; &quot;快速排序后：&quot; &lt;&lt; endl;
+    List.QuickSort();
+    List.Output();
+    cout&lt;&lt;&quot;请输入查找第k小元素的k值：&quot;&lt;&lt; endl;
+       cin&gt;&gt;k;
+    List.Select(k);
+    for (int i=1;i&lt;=m;i++)
+        List.Select(i);
+    return 0;
+ 
+&#125;
+</code></pre>
 <h3 id="2-广告位"><a href="#2-广告位" class="headerlink" title="2.广告位"></a>2.广告位</h3><p><img class="lazyload lazyload-style-1" src="data:image/svg+xml;base64,PCEtLUFyZ29uTG9hZGluZy0tPgo8c3ZnIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgc3Ryb2tlPSIjZmZmZmZmMDAiPjxnPjwvZz4KPC9zdmc+"  data-original="https://cdn.jsdelivr.net/gh/jackball24/miscpic@main/202305040848895.png" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" alt="1"></p>
 
 
@@ -1136,7 +1628,7 @@ void odd_even(int *a)&#123;
 				var argonEnableCodeHighlight = true;
 			</script>
 			
-<link rel="stylesheet" href="/assets/vendor/highlight/styles/onedark.css">
+<link rel="stylesheet" href="/assets/vendor/highlight/styles/onedarkpro.css">
 
 		
 
