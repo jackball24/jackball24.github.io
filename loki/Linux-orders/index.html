@@ -8,18 +8,24 @@
 	
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	
-	<meta name="description" content="时空…一场梦">
+	<meta name="description" content="前言 &amp;emsp;&amp;emsp;最近写操作系统的实验用到了很多Linux的操作，想着虽然提前接触过Linux，但是好像并没有做一些系统的归纳总结，正好借着这机会来重温一下   只看命令请跳转——&gt;4.基础命令 1.Linux之灵魂Linux作为一个开源且免费的操作系统，深受极客喜爱，它稳定且高效、安全且自由，在服务器领域运用广泛。 初次使用Linux操作系统，你会发现在这里万物皆为文件，没有W">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux简单命令入门">
 <meta property="og:url" content="https://shikongl0k1.top/loki/Linux-orders/">
 <meta property="og:site_name" content="时空L0k1&#39;s Blog">
-<meta property="og:description" content="时空…一场梦">
+<meta property="og:description" content="前言 &amp;emsp;&amp;emsp;最近写操作系统的实验用到了很多Linux的操作，想着虽然提前接触过Linux，但是好像并没有做一些系统的归纳总结，正好借着这机会来重温一下   只看命令请跳转——&gt;4.基础命令 1.Linux之灵魂Linux作为一个开源且免费的操作系统，深受极客喜爱，它稳定且高效、安全且自由，在服务器领域运用广泛。 初次使用Linux操作系统，你会发现在这里万物皆为文件，没有W">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/jackball24/Myblog_pic@main/2204dedsktop.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/jackball24/Myblog_pic@main/cut1.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/jackball24/Myblog_pic@main/cut2.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/jackball24/Myblog_pic@main/cut3.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/jackball24/Myblog_pic@main/cut4.png">
 <meta property="article:published_time" content="2023-05-08T06:36:26.000Z">
-<meta property="article:modified_time" content="2023-05-08T06:37:01.598Z">
+<meta property="article:modified_time" content="2023-05-11T14:03:05.653Z">
 <meta property="article:author" content="时空L0k1">
 <meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/jackball24/Myblog_pic@main/2204dedsktop.jpg">
 
 	<meta name="theme-color" content="#5e72e4">
 	<meta name="theme-color-rgb" content="94,114,228">
@@ -627,15 +633,18 @@
 		
 			
 	<article class="post post-full card bg-white shadow-sm border-0 post-preview">
-	<header class="post-header text-center">
+	<header class="post-header text-center post-header-with-thumbnail">
 		
+				<img class='post-thumbnail lazyload' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABBJREFUeNpi+P//PwNAgAEACPwC/tuiTRYAAAAASUVORK5CYII=' data-original='https://cdn.jsdelivr.net/gh/jackball24/Myblog_pic@main/2204dedsktop.jpg' alt='thumbnail'></img>
+				<div class='post-header-text-container'>
+			
 		<a class="post-title" href="/loki/Linux-orders/">Linux简单命令入门</a>
 		<div class="post-meta">
 			
 						
 						<div class="post-meta-detail post-meta-detail-time">
 							<i class="fa fa-clock-o" aria-hidden="true"></i>
-							<time title="发布于 2023-5-8 14:36:26 | 编辑于 2023-5-8 14:37:01">2023-5-8 14:36
+							<time title="发布于 2023-5-8 14:36:26 | 编辑于 2023-5-11 22:03:05">2023-5-8 14:36
 							</time>
 						</div>
 					
@@ -644,7 +653,7 @@
 						
 						<div class="post-meta-detail post-meta-detail-edittime">
 							<i class="fa fa-clock-o" aria-hidden="true"></i>
-							<time title="发布于 2023-5-8 14:36:26 | 编辑于 2023-5-8 14:37:01">2023-5-8 14:37
+							<time title="发布于 2023-5-8 14:36:26 | 编辑于 2023-5-11 22:03:05">2023-5-11 22:03
 							</time>
 						</div>
 					
@@ -653,7 +662,7 @@
 						
 						<div class="post-meta-detail post-meta-detail-words">
 							<i class="fa fa-file-word-o" aria-hidden="true"></i>
-							0 字
+							1.6k 字
 						</div>
 					
 						
@@ -661,15 +670,82 @@
 						
 						<div class="post-meta-detail post-meta-detail-readingtime">
 							<i class="fa fa-hourglass-end" aria-hidden="true"></i>
-							1 分钟
+							5 分钟
 						</div>
 					
 		</div>
 		
+				</div>
+			
 	</header>
 
 	<div class="post-content" id="post_content">
-		
+		<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><div style="background-color: rgba(0, 0, 0, 0);width:100% ">
+&emsp;&emsp;最近写操作系统的实验用到了很多Linux的操作，想着虽然提前接触过Linux，但是好像并没有做一些系统的归纳总结，正好借着这机会来重温一下
+</div>
+
+<p><strong><u>只看命令请跳转——&gt;4.基础命令</u></strong></p>
+<h3 id="1-Linux之灵魂"><a href="#1-Linux之灵魂" class="headerlink" title="1.Linux之灵魂"></a>1.Linux之灵魂</h3><p><strong>Linux</strong>作为一个开源且免费的操作系统，深受极客喜爱，它稳定且高效、安全且自由，在服务器领域运用广泛。</p>
+<p>初次使用Linux操作系统，你会发现在这里万物皆为文件，没有Windows那复杂的系统构造，频繁的版本更新，以及修改系统文件时权限不够的问题；还能支持一些Windows和MacOS所不能的服务。Linux，yes！</p>
+<p>目前市面上较知名的发行版有：<strong>Ubuntu、RedHat、CentOS、Debian、Fedora、Arch Linux</strong>等，还有一些常见的比如<strong>kali</strong>（基于Debian的发行版，常用于网络渗透测试、破解密码、逆向工程等，深受hacker们喜爱）。</p>
+<p>而Linux之灵魂，便是<strong>terminal</strong>和<strong>command</strong>（终端和命令），用户在终端输入命令，然后<strong>shell</strong>（命令解释器）翻译并执行指令，将结果返还给终端（有点像windows的cmd）。</p>
+<p>Linux的安装十分简单，一般推荐刚入坑的萌新使用的，是一个叫Ubuntu（乌班图）的Linux发行版，第一次一般会推荐使用<a target="_blank" rel="noopener" href="https://www.vmware.com/products/workstation-pro/workstation-pro-evaluation.html">VMware Workstation Pro</a>+官网下载系统镜像<a target="_blank" rel="noopener" href="https://ubuntu.com/download/desktop">Download Ubuntu Desktop | Download | Ubuntu</a>，当然这可能会很慢，所以也可以去清华镜像站<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/">清华大学开源软件镜像站 | Tsinghua Open Source Mirror</a>或者你邮的镜像站<a target="_blank" rel="noopener" href="http://mirrors.njupt.edu.cn/">南京邮电大学开源软件镜像站 | Njupt Open Source Mirror</a>（东西少但下载还挺快的）下载所需要的ISO镜像；当然，完整的安装步骤较多，建议找一篇较新的教程。</p>
+<p>按照一些教程成功安装虚拟机之后便会进入一个桌面，红底，上面有豹猫（20.04）或者水母（22.04）之类的东西。</p>
+<p><img class="lazyload lazyload-style-1" src="data:image/svg+xml;base64,PCEtLUFyZ29uTG9hZGluZy0tPgo8c3ZnIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgc3Ryb2tlPSIjZmZmZmZmMDAiPjxnPjwvZz4KPC9zdmc+"  data-original="https://cdn.jsdelivr.net/gh/jackball24/Myblog_pic@main/2204dedsktop.jpg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" alt="22.04desktop"></p>
+
+<p>这是带有图形化界面的Ubuntu，而他的本体只是那一个命令行以及所使用的Ubuntu server，也就是说：所有你能用图形化界面完成的事情，<strong>命令行</strong>都能完成（早期的系统都是先有命令行，再在此基础上开发适合大众使用的图形化界面）。</p>
+<h3 id="2-VM虚拟机的小技巧"><a href="#2-VM虚拟机的小技巧" class="headerlink" title="2.VM虚拟机的小技巧"></a>2.VM虚拟机的小技巧</h3><h4 id="2-1快照的使用"><a href="#2-1快照的使用" class="headerlink" title="2.1快照的使用"></a>2.1快照的使用</h4><p>在主机中，如果不小心把C盘重要文件删了，电脑扑街了咋办？重装&#x2F;重买&#x2F;花大把时间用工具恢复。而在虚拟机中，你仿佛拥有了时间宝石，可以随时回到你创建快照的那个时间，那个样子。</p>
+<p>这一切的实现只需要两步</p>
+<p>1.<img class="lazyload lazyload-style-1" src="data:image/svg+xml;base64,PCEtLUFyZ29uTG9hZGluZy0tPgo8c3ZnIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgc3Ryb2tlPSIjZmZmZmZmMDAiPjxnPjwvZz4KPC9zdmc+"  data-original="https://cdn.jsdelivr.net/gh/jackball24/Myblog_pic@main/cut1.png" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" alt="image-20230511204330059"></p>
+
+<p>2.在未来想要回到刚才那个时间点的时候点击“恢复到快照”</p>
+<h4 id="2-2克隆和删除"><a href="#2-2克隆和删除" class="headerlink" title="2.2克隆和删除"></a>2.2克隆和删除</h4><p>可以在左侧右击</p>
+<p><img class="lazyload lazyload-style-1" src="data:image/svg+xml;base64,PCEtLUFyZ29uTG9hZGluZy0tPgo8c3ZnIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgc3Ryb2tlPSIjZmZmZmZmMDAiPjxnPjwvZz4KPC9zdmc+"  data-original="https://cdn.jsdelivr.net/gh/jackball24/Myblog_pic@main/cut2.png" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" alt="image-20230511204821285"></p>
+
+<h4 id="2-3VMtools"><a href="#2-3VMtools" class="headerlink" title="2.3VMtools"></a>2.3VMtools</h4><p>没法在主机和虚拟机之间复制粘贴？我想直接把文件拽进虚拟机？安装一个vmtools通通搞定</p>
+<p><img class="lazyload lazyload-style-1" src="data:image/svg+xml;base64,PCEtLUFyZ29uTG9hZGluZy0tPgo8c3ZnIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgc3Ryb2tlPSIjZmZmZmZmMDAiPjxnPjwvZz4KPC9zdmc+"  data-original="https://cdn.jsdelivr.net/gh/jackball24/Myblog_pic@main/cut3.png" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" alt="image-20230511205255605"></p>
+
+<h3 id="3-常用的目录"><a href="#3-常用的目录" class="headerlink" title="3.常用的目录"></a>3.常用的目录</h3><ul>
+<li><code>/</code>   根目录，可以想象成数据结构里面的根结点</li>
+<li><code>/root</code>  超级管理员的主目录</li>
+<li><code>/home</code>  普通用户主目录</li>
+<li><code>/bin</code>  bin 是 Binaries (二进制文件) 的缩写, 这个目录存放着最经常使用的命令。</li>
+<li><code>/boot</code>  这里存放的是启动 Linux 时使用的一些核心文件，包括一些连接文件以及镜像文件。</li>
+<li><code>/lib</code>  lib 是 Library(库) 的缩写这个目录里存放着系统最基本的动态连接共享库，其作用类似于 Windows 里的 DLL 文件。</li>
+<li><code>/usr</code>   unix shared resources(共享资源) 的缩写，这是一个非常重要的目录，用户的很多应用程序和文件都放在这个目录下，类似于 windows 下的 program files 目录。</li>
+<li><code>/var</code>  variable(变量) 的缩写，这个目录中存放着在不断扩充着的东西，我们习惯将那些经常被修改的目录放在这个目录下。包括各种日志文件。</li>
+<li><code>/usr/bin</code>  系统用户使用的应用程序。</li>
+</ul>
+<h3 id="4-基础命令"><a href="#4-基础命令" class="headerlink" title="4.基础命令"></a>4.基础命令</h3><p>这里不会把命令列得很全，主要还是一些最简单的操作。</p>
+<h4 id="4-1实际场景"><a href="#4-1实际场景" class="headerlink" title="4.1实际场景"></a>4.1实际场景</h4><p>桌面右键后&#x2F;直接点terminal，进入终端（以下截图均为Wsl2-kali，非VM-Ubuntu），你可以直接使用普通用户操作，当然，你也可以使用<strong>sudo -i</strong>或<strong>sudo</strong>或<strong>su</strong>等命令进入root用户</p>
+<p>（三个命令有一些区别：sudo : 暂时切换到超级用户模式以执行超级用户权限；su ： 切换到某某用户模式，提示输入密码时该密码为切换后账户的密码，默认为root账户；sudo -i: 为了频繁的执行某些只有超级用户才能执行的权限，而不用每次输入密码，可以使用该命令。提示输入密码时该密码为当前账户的密码。没有时间限制）</p>
+<p><code>sudo -i</code>，输入密码（可能不显示，输完敲回车即可）</p>
+<p><img class="lazyload lazyload-style-1" src="data:image/svg+xml;base64,PCEtLUFyZ29uTG9hZGluZy0tPgo8c3ZnIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgc3Ryb2tlPSIjZmZmZmZmMDAiPjxnPjwvZz4KPC9zdmc+"  data-original="https://cdn.jsdelivr.net/gh/jackball24/Myblog_pic@main/cut4.png" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" alt="image-20230511211927566"></p>
+
+<p>然后我们想干嘛呢？在windows中我们一般是先看到一堆文件，然后选择进入哪一个，那么在linux里，我们只使用命令行要怎么做？</p>
+<p>查看当前目录下的文件</p>
+<p><code>ls</code>或者更详细一点的<code>ll</code></p>
+<p>我要新建文件夹</p>
+<p><code>mkdir 文件夹名</code></p>
+<p>我要进入这个文件夹</p>
+<p><code>cd 文件名</code></p>
+<p>ls再次查看</p>
+<p>我想看一下（只读）secret里到底有什么？</p>
+<p>cat 文件名</p>
+<p>我要安装gcc？</p>
+<p>sudo apt install</p>
+<p>（root账户就不需要前面的sudo）</p>
+<p>温馨提示：你输入过的所有命令都可以使用↑和↓键来翻阅（省去了长命令的二次输入）</p>
+<h4 id="4-3-vi-x2F-vim操作"><a href="#4-3-vi-x2F-vim操作" class="headerlink" title="4.3 vi&#x2F;vim操作"></a>4.3 vi&#x2F;vim操作</h4><p>vim为linux自带vi的升级版，两者你都可以看成是windows里的记事本，只不过更“高级”一点。</p>
+<h3 id="5-换源以及安装输入法等操作"><a href="#5-换源以及安装输入法等操作" class="headerlink" title="5.换源以及安装输入法等操作"></a>5.换源以及安装输入法等操作</h3><p>我们会发现在使用apt下载东西的时候速度很慢，还总是卡住，那是因为原来的源在国内是很慢的，就像前面下载官方镜像一样，我们需要换成国内的镜像源……未完待续</p>
+<h3 id="引用及参考"><a href="#引用及参考" class="headerlink" title="引用及参考"></a>引用及参考</h3><p>该文章部分内容参考以下网站&#x2F;博客：</p>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://www.runoob.com/linux">https://www.runoob.com/linux</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.yumoyumo.top/295.html">Linux入门到实践 – 羽墨的个人博客 (yumoyumo.top)</a></p>
+</li>
+</ul>
+
 	</div>
 
 	
@@ -741,7 +817,8 @@
 <script type="text/javascript">
 	socialShare("#share", {
 	    title : 'Linux简单命令入门',
-	    description : '',
+	    description : '前言
+&amp;emsp;&amp;emsp;最近写操作系统的实验用到了很多Linux的操作，想着虽然提前接触过Li...',
 	    wechatQrcodeTitle : "分享到微信",
 	    wechatQrcodeHelper : '微信扫描二维码',
 	    source : 'https://shikongl0k1.top/loki/Linux-orders/'
